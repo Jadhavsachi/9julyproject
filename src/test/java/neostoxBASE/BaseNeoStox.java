@@ -20,25 +20,17 @@ public class BaseNeoStox
 		System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
 		
 		driver= new ChromeDriver();
+	   driver.manage().window().maximize();
+	   driver.get(UtilityNeoStox.readDataFromPropertiesFile("QAurl"));
 		
-	     driver.manage().window().maximize();
-	     
-		  
-		driver.get(UtilityNeoStox.readDataFromPropertiesFile("QAurl"));
-		
-		
-		UtilityNeoStox.waitmethod(driver, 500);
+	   UtilityNeoStox.waitmethod(driver, 500);
 	}
 	//2. Screenshot common method
-	
-			public void screenshotmethod( String TCID) throws IOException
+	   public void screenshotmethod( String TCID) throws IOException
 			{
-				
 				 File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		         
 		         File dest= new File("E:\\Screenshot\\"+TCID+".jpg");
-				
-				FileHandler.copy(src, dest);
+			     FileHandler.copy(src, dest);
 				
 			}
 
